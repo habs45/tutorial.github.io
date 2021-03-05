@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOLIST</title>
+    <link href="todolist.css" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <div class="nav">
+    <div class="navbar" id="main">TodoList</div>
+    <div class="navbar">DailyEvents</div>
+    <div class="navbar">SpecialEvents</div>
+    <div class="navbar">ImportantDates</div>
+</div>
+</nav> 
+
+    <div class="container">
+        <div class="top" id="top">TODOs LIST</div>
+<div class="contain1">Title</div>
+<input type="text" id="input1">
+<div class="contain2">Description</div>
+<input type="text" id="input2">
+<div class="contain3">Time</div>
+<input type="time" id="input3">
+</div>
+<div class=btn><button id="btn1">Add To List</butthn></div>
+</div>
+
+<div class="mid">YOUR ITEMS</div>
+<table class="tbl">
+<thead>
+    <tr id="table">
+        <th>SNO</th>
+        <th>Item Title</th>
+        <th>Item Description</th>
+        <th>Time</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>1</td>
+        <td>Drink</td>
+        <td>want cofee</td>
+        <td>4:30AM</td>
+        <td><button id="del">Delete</button></td> 
+    </tr>
+</tbody>
+</table>
+
+
+
+<script>
+     add=document.getElementById('btn1')
+    add.addEventListener("click",()=>{
+        console.log("harshal")
+        tit=document.getElementById('input1')
+        desc=document.getElementById('input2')
+        time=document.getElementById('input3')
+      if(localStorage.getItem('itemsJson')==null){
+          itemJsonArray=[]
+          itemJsonArray.push([tit,desc,time]);
+          localStorage.setItem('itemsJson',JSON.stringify(itemJsonArray))
+
+      }
+      else{
+          itemJsonArraystr=localStorage.getItem('itemJsonArray')
+          itemJsonArray=JSON.parse(itemJsonArraystr);
+          itemJsonArray.push([tit,desc,time]);
+          localStorage.setItem('itemsJson',JSON.stringify(itemJsonArray))
+      }
+    })
+</script>
+</body>
+
+</html>
